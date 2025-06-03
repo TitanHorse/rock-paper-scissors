@@ -8,7 +8,6 @@ function playRound() {
      let computerScore = 0;
      let draws = 0;
  let humanScore = 0;
-    while(roundsPlayed < 5) {
         const userInput = prompt("Choose rock, paper or scissors")
         if(userInput === null) {
             return;
@@ -42,7 +41,7 @@ humanScore++;
 roundsPlayed++;
  
     
-}
+
    if(humanScore > computerScore){
         console.log(`You won! You won ${humanScore} rounds, the computer won ${computerScore}`) 
     } else {
@@ -52,4 +51,4 @@ roundsPlayed++;
     
      {
 }
-playRound();
+playRound()

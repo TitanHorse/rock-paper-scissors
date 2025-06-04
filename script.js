@@ -3,31 +3,23 @@ function computerChoice() {
     const choices = ["rock", "paper", "scissors"];
    return choices[Math.floor(Math.random()*3)]
 }
-
+const btn1 = document.querySelector(".btn1");
+const btn2 = document.querySelector(".btn2");
+const btn3 = document.querySelector(".btn3");
 
 btn1.innerText = "Rock";
 btn2.innerText = "Paper";
 btn3.innerText = "Scissors";
-btn1.addEventListener("click", function(e) {
-    playRound("rock", computer);
-})
+
+
+
  let humanScore = 0;
+ let roundsPlayed = 0; 
+ let draws = 0;
    let computerScore = 0;
-function playRound() {
-    let roundsPlayed = 0;
-  
-     let draws = 0;
+function playRound(player, computer) {
 
-        const userInput = prompt("Choose rock, paper or scissors")
-        if(userInput === null) {
-            return;
-        }
-
-
- computerChoice();
-
- let computer = computerChoice();
- let player = userInput.toLowerCase()
+computer = computerChoice();
 
     
  if(player === computer) {
@@ -51,15 +43,26 @@ humanScore++;
     computerScore++;
  }
 roundsPlayed++;
- 
-}
 
+if(roundsPlayed === 5) {
    if(humanScore > computerScore){
         console.log(`You won! You won ${humanScore} rounds, the computer won ${computerScore}`) 
     } else {
         console.log(`You lost! You won ${humanScore} rounds, the computer won ${computerScore}`)
              
     } 
-    
+ 
+}
+
+    }
      {
 }
+ btn1.addEventListener("click", () => {
+ playRound("rock", computerChoice())
+})
+btn2.addEventListener("click", () => {
+     playRound("paper", computerChoice())
+})
+ btn3.addEventListener("click", () => {
+  playRound("scissors", computerChoice())
+ })

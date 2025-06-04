@@ -11,47 +11,47 @@ btn1.innerText = "Rock";
 btn2.innerText = "Paper";
 btn3.innerText = "Scissors";
 
-
+const divOne = document.querySelector(".display");
+const para1 = document.querySelector(".para1")
+const para2 = document.querySelector(".para2")
 
  let humanScore = 0;
  let roundsPlayed = 0; 
  let draws = 0;
    let computerScore = 0;
 function playRound(player, computer) {
-
+if(roundsPlayed >= 5) return;
 computer = computerChoice();
 
     
  if(player === computer) {
 console.log("draw")
+para1.innerText = "Draw!";
 draws++;
+
  }
- else if(player === "rock" && computer === "scissors") {
-console.log("you win");
+ else if((player === "rock" && computer === "scissors") ||
+ (player === "paper" && computer === "rock") ||
+ (player === "scissors" && computer == "paper"))
+  {
+para1.innerText = `You win! ${player} beats ${computer}!`;
 humanScore++;
- }
- else if(player === "paper" && computer === "rock") {
-    console.log("you win");
-humanScore++;
- }
- else if(player === "scissors" && computer == "paper") {
-    console.log("you win");
-humanScore++;
- }
+
+  }
  else {
-    console.log("you lose");
+    para1.innerText = `You Lose! ${computer} beats ${player}!`
     computerScore++;
+   
  }
 roundsPlayed++;
-
+para2.innerText = `Your score: ${humanScore}, computer score ${computerScore}`
 if(roundsPlayed === 5) {
    if(humanScore > computerScore){
-        console.log(`You won! You won ${humanScore} rounds, the computer won ${computerScore}`) 
+       divOne.innerText = `You won the game! You won ${humanScore} rounds, the computer won ${computerScore}`
     } else {
-        console.log(`You lost! You won ${humanScore} rounds, the computer won ${computerScore}`)
-             
+         divOne.innerText = `You lost the game! You won ${humanScore} rounds, the computer won ${computerScore}`;
     } 
- 
+
 }
 
     }
